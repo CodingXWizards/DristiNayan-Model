@@ -12,7 +12,7 @@ def detection(images: str):
 
     print(f"Building the model {'facenet'}")
 
-    #    DeepFace.find(
+    # DeepFace.find(
     #    img_path=np.zeros([244, 244, 3]),
     #    db_path=images,
     #   model_name='Facenet',
@@ -31,12 +31,8 @@ def detection(images: str):
             enforce_detection=False)
         cv2.imshow("Frame: ", frame)
         if source_obj[0]['confidence'] > 0.8:
-            print(source_obj[0]['facial_area'])
             x, y, w, h = source_obj[0]['facial_area'].values()
             print(x, y, w, h)
-            cv2.putText(frame, "Face Detected", (x, y - 10),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.9, text_color, 435)
-            cv2.rectangle(frame, (x, y), (x + w, y + h), text_color, 1)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
